@@ -1,4 +1,4 @@
-# Metric Filter/Alarm for unauthorized CloudTrail calls
+# Metric Filter/Alarm for unauthorized CloudTrail calls (3.1)
 resource "aws_cloudwatch_log_metric_filter" "unauthorized_cloudtrail_calls" {
   name           = "unauthorized-cloudtrail-calls"
   pattern        = "{ ($.errorCode = \"*UnauthorizedOperation\") || ($.errorCode = \"AccessDenied*\") } "
@@ -28,7 +28,7 @@ resource "aws_cloudwatch_metric_alarm" "unauthorized_cloudtrail_calls" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for root access
+# Metric Filter/Alarm for root access (1.12)
 resource "aws_cloudwatch_log_metric_filter" "root_access" {
   name           = "root-access"
   pattern        = "{$.userIdentity.type = \"Root\"}"
@@ -56,7 +56,7 @@ resource "aws_cloudwatch_metric_alarm" "root_access" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for console access without MFA
+# Metric Filter/Alarm for console access without MFA (1.2)
 resource "aws_cloudwatch_log_metric_filter" "console_access_without_mfa" {
   name           = "console-access-without-mfa"
   pattern        = "{ ($.eventName = \"ConsoleLogin\") && ($.additionalEventData.MFAUsed != \"Yes\") }"
@@ -84,7 +84,7 @@ resource "aws_cloudwatch_metric_alarm" "console_access_without_mfa" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for usage of root account
+# Metric Filter/Alarm for usage of root account (1.1)
 resource "aws_cloudwatch_log_metric_filter" "root_account_usage" {
   name           = "root-account-usage"
   pattern        = "{ $.userIdentity.type = \"Root\" && $.userIdentity.invokedBy NOT EXISTS && $.eventType != \"AwsServiceEvent\" }"
@@ -112,7 +112,7 @@ resource "aws_cloudwatch_metric_alarm" "root_account_usage" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for IAM policy changes
+# Metric Filter/Alarm for IAM policy changes (3.4)
 resource "aws_cloudwatch_log_metric_filter" "iam_policy_change" {
   name           = "iam-policy-change"
   pattern        = "{($.eventName=DeleteGroupPolicy)||($.eventName=DeleteRolePolicy)||($.eventName=DeleteUserPolicy)||($.eventName=PutGroupPolicy)||($.eventName=PutRolePolicy)||($.eventName=PutUserPolicy)||($.eventName=CreatePolicy)||($.eventName=DeletePolicy)||($.eventName=CreatePolicyVersion)||($.eventName=DeletePolicyVersion)||($.eventName=AttachRolePolicy)||($.eventName=DetachRolePolicy)||($.eventName=AttachUserPolicy)||($.eventName=DetachUserPolicy)||($.eventName=AttachGroupPolicy)||($.eventName=DetachGroupPolicy)}"
@@ -140,7 +140,7 @@ resource "aws_cloudwatch_metric_alarm" "iam_policy_change" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for CloudTrail configuration changes
+# Metric Filter/Alarm for CloudTrail configuration changes (3.5)
 resource "aws_cloudwatch_log_metric_filter" "cloudtrail_config_change" {
   name           = "cloudtrail-config-change"
   pattern        = "{ ($.eventName = CreateTrail) || ($.eventName = UpdateTrail) || ($.eventName = DeleteTrail) || ($.eventName = StartLogging) || ($.eventName = StopLogging) }"
@@ -168,7 +168,7 @@ resource "aws_cloudwatch_metric_alarm" "cloudtrail_config_change" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for failed console logins
+# Metric Filter/Alarm for failed console logins (3.6)
 resource "aws_cloudwatch_log_metric_filter" "failed_console_login" {
   name           = "failed-console-login"
   pattern        = "{ ($.eventName = CreateTrail) || ($.eventName = UpdateTrail) || ($.eventName = DeleteTrail) || ($.eventName = StartLogging) || ($.eventName = StopLogging) }"
@@ -196,7 +196,7 @@ resource "aws_cloudwatch_metric_alarm" "failed_console_login" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for deleted KMS keys
+# Metric Filter/Alarm for deleted KMS keys (3.7)
 resource "aws_cloudwatch_log_metric_filter" "disable_or_delete_cmk" {
   name           = "disable-or-delete-cmk"
   pattern        = "{($.eventSource = kms.amazonaws.com) && (($.eventName=DisableKey)||($.eventName=ScheduleKeyDeletion)) }"
@@ -224,7 +224,7 @@ resource "aws_cloudwatch_metric_alarm" "disable_or_delete_cmk" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for s3 bucket policy changes
+# Metric Filter/Alarm for s3 bucket policy changes (3.8)
 resource "aws_cloudwatch_log_metric_filter" "s3_bucket_policy_change" {
   name           = "s3-bucket-policy-change"
   pattern        = "{ ($.eventSource = s3.amazonaws.com) && (($.eventName = PutBucketAcl) || ($.eventName = PutBucketPolicy) || ($.eventName = PutBucketCors) || ($.eventName = PutBucketLifecycle) || ($.eventName = PutBucketReplication) || ($.eventName = DeleteBucketPolicy) || ($.eventName = DeleteBucketCors) || ($.eventName = DeleteBucketLifecycle) || ($.eventName = DeleteBucketReplication)) }"
@@ -252,7 +252,7 @@ resource "aws_cloudwatch_metric_alarm" "s3_bucket_policy_change" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for AWS Config changes
+# Metric Filter/Alarm for AWS Config changes (3.9)
 resource "aws_cloudwatch_log_metric_filter" "aws_config_change" {
   name           = "aws-config-change"
   pattern        = "{ ($.eventSource = config.amazonaws.com) && (($.eventName=StopConfigurationRecorder)||($.eventName=DeleteDeliveryChannel) ||($.eventName=PutDeliveryChannel)||($.eventName=PutConfigurationRecorder)) }"
@@ -280,7 +280,7 @@ resource "aws_cloudwatch_metric_alarm" "aws_config_change" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for Security Group changes
+# Metric Filter/Alarm for Security Group changes (3.10)
 resource "aws_cloudwatch_log_metric_filter" "security_group_change" {
   name           = "security-group-change"
   pattern        = "{ ($.eventName = AuthorizeSecurityGroupIngress) || ($.eventName = AuthorizeSecurityGroupEgress) || ($.eventName = RevokeSecurityGroupIngress) || ($.eventName = RevokeSecurityGroupEgress) || ($.eventName = CreateSecurityGroup) || ($.eventName = DeleteSecurityGroup) }"
@@ -308,7 +308,7 @@ resource "aws_cloudwatch_metric_alarm" "security_group_change" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for NACL changes
+# Metric Filter/Alarm for NACL changes (3.11)
 resource "aws_cloudwatch_log_metric_filter" "nacl_change" {
   name           = "nacl-change"
   pattern        = "{ ($.eventName = CreateNetworkAcl) || ($.eventName = CreateNetworkAclEntry) || ($.eventName = DeleteNetworkAcl) || ($.eventName = DeleteNetworkAclEntry) || ($.eventName = ReplaceNetworkAclEntry) || ($.eventName = ReplaceNetworkAclAssociation) }"
@@ -336,7 +336,7 @@ resource "aws_cloudwatch_metric_alarm" "nacl_change" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for network gateway changes
+# Metric Filter/Alarm for network gateway changes (3.12)
 resource "aws_cloudwatch_log_metric_filter" "network_gateway_change" {
   name           = "network-gateway-change"
   pattern        = "{ ($.eventName = CreateCustomerGateway) || ($.eventName = DeleteCustomerGateway) || ($.eventName = AttachInternetGateway) || ($.eventName = CreateInternetGateway) || ($.eventName = DeleteInternetGateway) || ($.eventName = DetachInternetGateway) }"
@@ -364,7 +364,7 @@ resource "aws_cloudwatch_metric_alarm" "network_gateway_change" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for route table changes
+# Metric Filter/Alarm for route table changes (3.13)
 resource "aws_cloudwatch_log_metric_filter" "route_table_change" {
   name           = "route-table-change"
   pattern        = "{ ($.eventName = CreateRoute) || ($.eventName = CreateRouteTable) || ($.eventName = ReplaceRoute) || ($.eventName = ReplaceRouteTableAssociation) || ($.eventName = DeleteRouteTable) || ($.eventName = DeleteRoute) || ($.eventName = DisassociateRouteTable) }"
@@ -392,7 +392,7 @@ resource "aws_cloudwatch_metric_alarm" "route_table_change" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for route table changes
+# Metric Filter/Alarm for VPC Changes (3.14)
 resource "aws_cloudwatch_log_metric_filter" "vpc_change" {
   name           = "vpc-change"
   pattern        = "{ ($.eventName = CreateVpc) || ($.eventName = DeleteVpc) || ($.eventName = ModifyVpcAttribute) || ($.eventName = AcceptVpcPeeringConnection) || ($.eventName = CreateVpcPeeringConnection) || ($.eventName = DeleteVpcPeeringConnection) || ($.eventName = RejectVpcPeeringConnection) || ($.eventName = AttachClassicLinkVpc) || ($.eventName = DetachClassicLinkVpc) || ($.eventName = DisableVpcClassicLink) || ($.eventName = EnableVpcClassicLink) }"
