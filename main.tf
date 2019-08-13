@@ -56,7 +56,7 @@ resource "aws_cloudwatch_metric_alarm" "root_access" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for console access without MFA (1.2)
+# Metric Filter/Alarm for console access without MFA (3.2)
 resource "aws_cloudwatch_log_metric_filter" "console_access_without_mfa" {
   name           = "console-access-without-mfa"
   pattern        = "{ ($.eventName = \"ConsoleLogin\") && ($.additionalEventData.MFAUsed != \"Yes\") }"
@@ -84,7 +84,7 @@ resource "aws_cloudwatch_metric_alarm" "console_access_without_mfa" {
   alarm_actions = [var.notification_arn]
 }
 
-# Metric Filter/Alarm for usage of root account (1.1)
+# Metric Filter/Alarm for usage of root account (3.3)
 resource "aws_cloudwatch_log_metric_filter" "root_account_usage" {
   name           = "root-account-usage"
   pattern        = "{ $.userIdentity.type = \"Root\" && $.userIdentity.invokedBy NOT EXISTS && $.eventType != \"AwsServiceEvent\" }"
