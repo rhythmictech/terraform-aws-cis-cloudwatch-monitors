@@ -59,7 +59,7 @@ resource "aws_cloudwatch_metric_alarm" "root_access" {
 # Metric Filter/Alarm for console access without MFA
 resource "aws_cloudwatch_log_metric_filter" "console_access_without_mfa" {
   name           = "console-access-without-mfa"
-  pattern        = "{ ($.eventName = \"ConsoleLogin\") && ($.additionalEventData.MFAUsed != \"Yes\") }"
+  pattern        = "{($.eventName = \"ConsoleLogin\") && ($.additionalEventData.MFAUsed != \"Yes\")}"
   log_group_name = var.log_group
 
   metric_transformation {
@@ -171,7 +171,7 @@ resource "aws_cloudwatch_metric_alarm" "cloudtrail_config_change" {
 # Metric Filter/Alarm for failed console logins
 resource "aws_cloudwatch_log_metric_filter" "failed_console_login" {
   name           = "failed-console-login"
-  pattern        = "{ ($.eventName = CreateTrail) || ($.eventName = UpdateTrail) || ($.eventName = DeleteTrail) || ($.eventName = StartLogging) || ($.eventName = StopLogging) }"
+  pattern        = "{($.eventName=ConsoleLogin) && ($.errorMessage=\"Failed authentication\")}"
   log_group_name = var.log_group
 
   metric_transformation {
