@@ -2,6 +2,7 @@
 
 [![](https://github.com/rhythmictech/terraform-aws-cis-cloudwatch-monitors/workflows/check/badge.svg)](https://github.com/rhythmictech/terraform-aws-cis-cloudwatch-monitors/actions)
 
+Creates CloudWatch metric filters and alerts as required by the CIS AWS Benchmark.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
