@@ -419,4 +419,3 @@ resource "aws_cloudwatch_metric_alarm" "vpc_change" {
 
   alarm_actions = [var.notification_arn]
 }
-

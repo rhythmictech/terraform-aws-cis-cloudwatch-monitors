@@ -15,4 +15,3 @@ variable "default_period" {
   type    = string
   default = "300"
 }
-
