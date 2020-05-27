@@ -24,6 +24,7 @@ resource "aws_cloudwatch_metric_alarm" "unauthorized_cloudtrail_calls" {
   statistic           = "Sum"
   tags                = var.tags
   threshold           = 1
+  treat_missing_data  = "notBreaching"
 }
 
 # Metric Filter/Alarm for root access
@@ -52,6 +53,7 @@ resource "aws_cloudwatch_metric_alarm" "root_access" {
   statistic           = "Sum"
   tags                = var.tags
   threshold           = 1
+  treat_missing_data  = "notBreaching"
 }
 
 # Metric Filter/Alarm for console access without MFA
@@ -80,6 +82,7 @@ resource "aws_cloudwatch_metric_alarm" "console_access_without_mfa" {
   statistic           = "Sum"
   tags                = var.tags
   threshold           = 1
+  treat_missing_data  = "notBreaching"
 }
 
 # Metric Filter/Alarm for usage of root account
@@ -108,6 +111,7 @@ resource "aws_cloudwatch_metric_alarm" "root_account_usage" {
   statistic           = "Sum"
   tags                = var.tags
   threshold           = 1
+  treat_missing_data  = "notBreaching"
 
 }
 
@@ -137,6 +141,7 @@ resource "aws_cloudwatch_metric_alarm" "iam_policy_change" {
   statistic           = "Sum"
   tags                = var.tags
   threshold           = 1
+  treat_missing_data  = "notBreaching"
 }
 
 # Metric Filter/Alarm for CloudTrail configuration changes
@@ -165,6 +170,7 @@ resource "aws_cloudwatch_metric_alarm" "cloudtrail_config_change" {
   statistic           = "Sum"
   tags                = var.tags
   threshold           = 1
+  treat_missing_data  = "notBreaching"
 }
 
 # Metric Filter/Alarm for failed console logins
@@ -193,6 +199,7 @@ resource "aws_cloudwatch_metric_alarm" "failed_console_login" {
   statistic           = "Sum"
   tags                = var.tags
   threshold           = 1
+  treat_missing_data  = "notBreaching"
 }
 
 # Metric Filter/Alarm for deleted KMS keys
@@ -221,6 +228,7 @@ resource "aws_cloudwatch_metric_alarm" "disable_or_delete_cmk" {
   statistic           = "Sum"
   tags                = var.tags
   threshold           = 1
+  treat_missing_data  = "notBreaching"
 }
 
 # Metric Filter/Alarm for s3 bucket policy changes
@@ -249,6 +257,7 @@ resource "aws_cloudwatch_metric_alarm" "s3_bucket_policy_change" {
   statistic           = "Sum"
   tags                = var.tags
   threshold           = 1
+  treat_missing_data  = "notBreaching"
 }
 
 # Metric Filter/Alarm for AWS Config changes
@@ -276,6 +285,7 @@ resource "aws_cloudwatch_metric_alarm" "aws_config_change" {
   statistic           = "Sum"
   tags                = var.tags
   threshold           = 1
+  treat_missing_data  = "notBreaching"
 }
 
 # Metric Filter/Alarm for Security Group changes
@@ -304,6 +314,7 @@ resource "aws_cloudwatch_metric_alarm" "security_group_change" {
   statistic           = "Sum"
   tags                = var.tags
   threshold           = 1
+  treat_missing_data  = "notBreaching"
 }
 
 # Metric Filter/Alarm for NACL changes
@@ -332,6 +343,7 @@ resource "aws_cloudwatch_metric_alarm" "nacl_change" {
   statistic           = "Sum"
   tags                = var.tags
   threshold           = 1
+  treat_missing_data  = "notBreaching"
 }
 
 # Metric Filter/Alarm for network gateway changes
@@ -360,6 +372,7 @@ resource "aws_cloudwatch_metric_alarm" "network_gateway_change" {
   statistic           = "Sum"
   tags                = var.tags
   threshold           = 1
+  treat_missing_data  = "notBreaching"
 }
 
 # Metric Filter/Alarm for route table changes
@@ -388,6 +401,7 @@ resource "aws_cloudwatch_metric_alarm" "route_table_change" {
   statistic           = "Sum"
   tags                = var.tags
   threshold           = 1
+  treat_missing_data  = "notBreaching"
 }
 
 # Metric Filter/Alarm for route table changes
@@ -416,4 +430,5 @@ resource "aws_cloudwatch_metric_alarm" "vpc_change" {
   statistic           = "Sum"
   tags                = var.tags
   threshold           = 1
+  treat_missing_data  = "notBreaching"
 }
