@@ -124,3 +124,96 @@ variable "alarm_threshold_vpc_change" {
   description = "The value against which the specified statistic is compared."
   type        = number
 }
+
+##########################################
+# Datapoints to Alarm
+##########################################
+variable "datapoints_to_alarm_aws_config_change" {
+  default     = null
+  description = "(Optional) The number of datapoints that must be breaching to trigger the alarm."
+  type        = number
+}
+
+variable "datapoints_to_alarm_cloudtrail_config_change" {
+  default     = null
+  description = "(Optional) The number of datapoints that must be breaching to trigger the alarm."
+  type        = number
+}
+
+variable "datapoints_to_alarm_console_access_without_mfa" {
+  default     = null
+  description = "(Optional) The number of datapoints that must be breaching to trigger the alarm."
+  type        = number
+}
+
+variable "datapoints_to_alarm_disable_or_delete_cmk" {
+  default     = null
+  description = "(Optional) The number of datapoints that must be breaching to trigger the alarm."
+  type        = number
+}
+
+variable "datapoints_to_alarm_failed_console_login" {
+  default     = null
+  description = "(Optional) The number of datapoints that must be breaching to trigger the alarm."
+  type        = number
+}
+
+variable "datapoints_to_alarm_iam_policy_change" {
+  default     = null
+  description = "(Optional) The number of datapoints that must be breaching to trigger the alarm."
+  type        = number
+}
+
+variable "datapoints_to_alarm_nacl_change" {
+  default     = null
+  description = "(Optional) The number of datapoints that must be breaching to trigger the alarm."
+  type        = number
+}
+
+variable "datapoints_to_alarm_network_gateway_change" {
+  default     = null
+  description = "(Optional) The number of datapoints that must be breaching to trigger the alarm."
+  type        = number
+}
+
+variable "datapoints_to_alarm_root_access" {
+  default     = null
+  description = "(Optional) The number of datapoints that must be breaching to trigger the alarm."
+  type        = number
+}
+
+variable "datapoints_to_alarm_root_account_usage" {
+  default     = null
+  description = "(Optional) The number of datapoints that must be breaching to trigger the alarm."
+  type        = number
+}
+
+variable "datapoints_to_alarm_route_table_change" {
+  default     = null
+  description = "(Optional) The number of datapoints that must be breaching to trigger the alarm."
+  type        = number
+}
+
+variable "datapoints_to_alarm_s3_bucket_policy_change" {
+  default     = null
+  description = "(Optional) The number of datapoints that must be breaching to trigger the alarm."
+  type        = number
+}
+
+variable "datapoints_to_alarm_security_group_change" {
+  default     = null
+  description = "(Optional) The number of datapoints that must be breaching to trigger the alarm."
+  type        = number
+}
+
+variable "datapoints_to_alarm_unauthorized_cloudtrail_calls" {
+  default     = null
+  description = "(Optional) The number of datapoints that must be breaching to trigger the alarm."
+  type        = number
+}
+
+variable "datapoints_to_alarm_vpc_change" {
+  default     = null
+  description = "(Optional) The number of datapoints that must be breaching to trigger the alarm."
+  type        = number
+}
