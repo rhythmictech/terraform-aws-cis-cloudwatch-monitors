@@ -23,7 +23,7 @@ resource "aws_cloudwatch_metric_alarm" "unauthorized_cloudtrail_calls" {
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_unauthorized_cloudtrail_calls
   treat_missing_data  = "notBreaching"
 }
 
@@ -52,7 +52,7 @@ resource "aws_cloudwatch_metric_alarm" "root_access" {
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_root_access
   treat_missing_data  = "notBreaching"
 }
 
@@ -81,7 +81,7 @@ resource "aws_cloudwatch_metric_alarm" "console_access_without_mfa" {
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_console_access_without_mfa
   treat_missing_data  = "notBreaching"
 }
 
@@ -110,7 +110,7 @@ resource "aws_cloudwatch_metric_alarm" "root_account_usage" {
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_root_account_usage
   treat_missing_data  = "notBreaching"
 
 }
@@ -140,7 +140,7 @@ resource "aws_cloudwatch_metric_alarm" "iam_policy_change" {
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_iam_policy_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -169,7 +169,7 @@ resource "aws_cloudwatch_metric_alarm" "cloudtrail_config_change" {
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_cloudtrail_config_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -198,7 +198,7 @@ resource "aws_cloudwatch_metric_alarm" "failed_console_login" {
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_failed_console_login
   treat_missing_data  = "notBreaching"
 }
 
@@ -227,7 +227,7 @@ resource "aws_cloudwatch_metric_alarm" "disable_or_delete_cmk" {
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_disable_or_delete_cmk
   treat_missing_data  = "notBreaching"
 }
 
@@ -256,7 +256,7 @@ resource "aws_cloudwatch_metric_alarm" "s3_bucket_policy_change" {
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_s3_bucket_policy_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -284,7 +284,7 @@ resource "aws_cloudwatch_metric_alarm" "aws_config_change" {
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_aws_config_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -313,7 +313,7 @@ resource "aws_cloudwatch_metric_alarm" "security_group_change" {
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_security_group_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -342,7 +342,7 @@ resource "aws_cloudwatch_metric_alarm" "nacl_change" {
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_nacl_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -371,7 +371,7 @@ resource "aws_cloudwatch_metric_alarm" "network_gateway_change" {
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_network_gateway_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -400,7 +400,7 @@ resource "aws_cloudwatch_metric_alarm" "route_table_change" {
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_route_table_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -429,6 +429,6 @@ resource "aws_cloudwatch_metric_alarm" "vpc_change" {
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_vpc_change
   treat_missing_data  = "notBreaching"
 }
