@@ -17,13 +17,14 @@ resource "aws_cloudwatch_metric_alarm" "unauthorized_cloudtrail_calls" {
   alarm_name          = "${var.name_prefix}unauthorized-cloudtrail-calls"
   alarm_description   = "Monitor unauthorized API calls through cloudtrail"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  datapoints_to_alarm = var.datapoints_to_alarm_unauthorized_cloudtrail_calls
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}UnauthorizedCloudtrailCallCount"
   namespace           = var.metric_namespace
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_unauthorized_cloudtrail_calls
   treat_missing_data  = "notBreaching"
 }
 
@@ -46,13 +47,14 @@ resource "aws_cloudwatch_metric_alarm" "root_access" {
   alarm_name          = "${var.name_prefix}root_access"
   alarm_description   = "Monitor usage of root credentials"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  datapoints_to_alarm = var.datapoints_to_alarm_root_access
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}RootAccess"
   namespace           = var.metric_namespace
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_root_access
   treat_missing_data  = "notBreaching"
 }
 
@@ -75,13 +77,14 @@ resource "aws_cloudwatch_metric_alarm" "console_access_without_mfa" {
   alarm_name          = "${var.name_prefix}console-access-without-mfa"
   alarm_description   = "Monitor console logins without mfa"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  datapoints_to_alarm = var.datapoints_to_alarm_console_access_without_mfa
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}ConsoleAccessWithoutMfa"
   namespace           = var.metric_namespace
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_console_access_without_mfa
   treat_missing_data  = "notBreaching"
 }
 
@@ -104,13 +107,14 @@ resource "aws_cloudwatch_metric_alarm" "root_account_usage" {
   alarm_name          = "${var.name_prefix}root-account-usage"
   alarm_description   = "Monitor root account usage"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  datapoints_to_alarm = var.datapoints_to_alarm_root_account_usage
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}RootAccountUsageCount"
   namespace           = var.metric_namespace
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_root_account_usage
   treat_missing_data  = "notBreaching"
 
 }
@@ -134,13 +138,14 @@ resource "aws_cloudwatch_metric_alarm" "iam_policy_change" {
   alarm_name          = "${var.name_prefix}iam-policy-change"
   alarm_description   = "Monitor IAM policy changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  datapoints_to_alarm = var.datapoints_to_alarm_iam_policy_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}IamPolicyChangeCount"
   namespace           = var.metric_namespace
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_iam_policy_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -163,13 +168,14 @@ resource "aws_cloudwatch_metric_alarm" "cloudtrail_config_change" {
   alarm_name          = "${var.name_prefix}cloudtrail-config-change"
   alarm_description   = "Monitor CloudTrail configuration changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  datapoints_to_alarm = var.datapoints_to_alarm_cloudtrail_config_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}CloudTrailConfigChangeCount"
   namespace           = var.metric_namespace
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_cloudtrail_config_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -192,13 +198,14 @@ resource "aws_cloudwatch_metric_alarm" "failed_console_login" {
   alarm_name          = "${var.name_prefix}failed-console-login"
   alarm_description   = "Monitor failed console logins"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  datapoints_to_alarm = var.datapoints_to_alarm_failed_console_login
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}FailedConsoleLoginCount"
   namespace           = var.metric_namespace
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_failed_console_login
   treat_missing_data  = "notBreaching"
 }
 
@@ -221,13 +228,14 @@ resource "aws_cloudwatch_metric_alarm" "disable_or_delete_cmk" {
   alarm_name          = "${var.name_prefix}disable-or-delete-cmk"
   alarm_description   = "Monitor disabled or deleted KMS keys"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  datapoints_to_alarm = var.datapoints_to_alarm_disable_or_delete_cmk
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}DisableOrDeleteCmkCount"
   namespace           = var.metric_namespace
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_disable_or_delete_cmk
   treat_missing_data  = "notBreaching"
 }
 
@@ -250,13 +258,14 @@ resource "aws_cloudwatch_metric_alarm" "s3_bucket_policy_change" {
   alarm_name          = "${var.name_prefix}s3-bucket-policy-change"
   alarm_description   = "Monitor s3 bucket policy changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  datapoints_to_alarm = var.datapoints_to_alarm_s3_bucket_policy_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}S3BucketPolicyChangeCount"
   namespace           = var.metric_namespace
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_s3_bucket_policy_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -278,13 +287,14 @@ resource "aws_cloudwatch_metric_alarm" "aws_config_change" {
   alarm_name          = "${var.name_prefix}aws-config-change"
   alarm_description   = "Monitor for AWS Config changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  datapoints_to_alarm = var.datapoints_to_alarm_aws_config_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}AwsConfigChangeCount"
   namespace           = var.metric_namespace
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_aws_config_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -307,13 +317,14 @@ resource "aws_cloudwatch_metric_alarm" "security_group_change" {
   alarm_name          = "${var.name_prefix}security-group-change"
   alarm_description   = "Monitor for security group changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  datapoints_to_alarm = var.datapoints_to_alarm_security_group_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}SecurityGroupChangeCount"
   namespace           = var.metric_namespace
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_security_group_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -336,13 +347,14 @@ resource "aws_cloudwatch_metric_alarm" "nacl_change" {
   alarm_name          = "${var.name_prefix}nacl-change"
   alarm_description   = "Monitor for NACL changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  datapoints_to_alarm = var.datapoints_to_alarm_nacl_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}NaclChangeCount"
   namespace           = var.metric_namespace
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_nacl_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -365,13 +377,14 @@ resource "aws_cloudwatch_metric_alarm" "network_gateway_change" {
   alarm_name          = "${var.name_prefix}network-gateway-change"
   alarm_description   = "Monitor for network gateway changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  datapoints_to_alarm = var.datapoints_to_alarm_network_gateway_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}NetworkGatewayChangeCount"
   namespace           = var.metric_namespace
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_network_gateway_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -394,13 +407,14 @@ resource "aws_cloudwatch_metric_alarm" "route_table_change" {
   alarm_name          = "${var.name_prefix}route-table-change"
   alarm_description   = "Monitor for route table changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  datapoints_to_alarm = var.datapoints_to_alarm_route_table_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}RouteTableChangeCount"
   namespace           = var.metric_namespace
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_route_table_change
   treat_missing_data  = "notBreaching"
 }
 
@@ -423,12 +437,13 @@ resource "aws_cloudwatch_metric_alarm" "vpc_change" {
   alarm_name          = "${var.name_prefix}vpc-change"
   alarm_description   = "Monitor for VPC config changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  datapoints_to_alarm = var.datapoints_to_alarm_vpc_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}VpcChangeCount"
   namespace           = var.metric_namespace
   period              = var.default_period
   statistic           = "Sum"
   tags                = var.tags
-  threshold           = 1
+  threshold           = var.alarm_threshold_vpc_change
   treat_missing_data  = "notBreaching"
 }
