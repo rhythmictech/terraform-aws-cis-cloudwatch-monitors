@@ -24,7 +24,6 @@ jobs:
           AWS_DEFAULT_REGION: us-east-1
           # many of these are covered by better reviewdog linters below
           SKIP: >-
-            terraform_tflint_deep,
             no-commit-to-branch,
             terraform_tflint_nocreds,
             terraform_tfsec
