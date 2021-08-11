@@ -17,6 +17,7 @@ resource "aws_cloudwatch_metric_alarm" "unauthorized_cloudtrail_calls" {
   alarm_name          = "${var.name_prefix}unauthorized-cloudtrail-calls"
   alarm_description   = "Monitor unauthorized API calls through cloudtrail"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  count               = var.core_alarms_only ? 0 : 1
   datapoints_to_alarm = var.datapoints_to_alarm_unauthorized_cloudtrail_calls
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}UnauthorizedCloudtrailCallCount"
@@ -138,6 +139,7 @@ resource "aws_cloudwatch_metric_alarm" "iam_policy_change" {
   alarm_name          = "${var.name_prefix}iam-policy-change"
   alarm_description   = "Monitor IAM policy changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  count               = var.core_alarms_only ? 0 : 1
   datapoints_to_alarm = var.datapoints_to_alarm_iam_policy_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}IamPolicyChangeCount"
@@ -168,6 +170,7 @@ resource "aws_cloudwatch_metric_alarm" "cloudtrail_config_change" {
   alarm_name          = "${var.name_prefix}cloudtrail-config-change"
   alarm_description   = "Monitor CloudTrail configuration changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  count               = var.core_alarms_only ? 0 : 1
   datapoints_to_alarm = var.datapoints_to_alarm_cloudtrail_config_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}CloudTrailConfigChangeCount"
@@ -228,6 +231,7 @@ resource "aws_cloudwatch_metric_alarm" "disable_or_delete_cmk" {
   alarm_name          = "${var.name_prefix}disable-or-delete-cmk"
   alarm_description   = "Monitor disabled or deleted KMS keys"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  count               = var.core_alarms_only ? 0 : 1
   datapoints_to_alarm = var.datapoints_to_alarm_disable_or_delete_cmk
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}DisableOrDeleteCmkCount"
@@ -258,6 +262,7 @@ resource "aws_cloudwatch_metric_alarm" "s3_bucket_policy_change" {
   alarm_name          = "${var.name_prefix}s3-bucket-policy-change"
   alarm_description   = "Monitor s3 bucket policy changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  count               = var.core_alarms_only ? 0 : 1
   datapoints_to_alarm = var.datapoints_to_alarm_s3_bucket_policy_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}S3BucketPolicyChangeCount"
@@ -287,6 +292,7 @@ resource "aws_cloudwatch_metric_alarm" "aws_config_change" {
   alarm_name          = "${var.name_prefix}aws-config-change"
   alarm_description   = "Monitor for AWS Config changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  count               = var.core_alarms_only ? 0 : 1
   datapoints_to_alarm = var.datapoints_to_alarm_aws_config_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}AwsConfigChangeCount"
@@ -317,6 +323,7 @@ resource "aws_cloudwatch_metric_alarm" "security_group_change" {
   alarm_name          = "${var.name_prefix}security-group-change"
   alarm_description   = "Monitor for security group changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  count               = var.core_alarms_only ? 0 : 1
   datapoints_to_alarm = var.datapoints_to_alarm_security_group_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}SecurityGroupChangeCount"
@@ -347,6 +354,7 @@ resource "aws_cloudwatch_metric_alarm" "nacl_change" {
   alarm_name          = "${var.name_prefix}nacl-change"
   alarm_description   = "Monitor for NACL changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  count               = var.core_alarms_only ? 0 : 1
   datapoints_to_alarm = var.datapoints_to_alarm_nacl_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}NaclChangeCount"
@@ -377,6 +385,7 @@ resource "aws_cloudwatch_metric_alarm" "network_gateway_change" {
   alarm_name          = "${var.name_prefix}network-gateway-change"
   alarm_description   = "Monitor for network gateway changes"
   comparison_operator = "GreaterThanOrEqualToThreshold"
+  count               = var.core_alarms_only ? 0 : 1
   datapoints_to_alarm = var.datapoints_to_alarm_network_gateway_change
   evaluation_periods  = 1
   metric_name         = "${var.name_prefix}NetworkGatewayChangeCount"
