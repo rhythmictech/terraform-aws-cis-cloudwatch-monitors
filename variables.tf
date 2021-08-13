@@ -1,3 +1,9 @@
+variable "core_alarms_only" {
+  default     = false
+  description = "Set to true to only get the core/important alarms"
+  type        = bool
+}
+
 variable "default_period" {
   default     = 300
   description = "Period (in seconds) over which to look for threshold events."
